@@ -13,4 +13,5 @@ console.log(jour);
 function addition(x, y) {
     return x + y;
 }
+console.log(addition(2, 2));
 //# sourceMappingURL=app.js.map

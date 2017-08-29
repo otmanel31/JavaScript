@@ -17,3 +17,4 @@ console.log(jour);
 function addition(x: number, y: number): number{
     return x+y;
 }
+console.log(addition(2,2));
