@@ -1,0 +1,34 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>TypeScript project</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <script src="js/require.js"></script>
+        <script>
+            require(["./js/app"], function(module){
+                // cette fonction sera appeler par erquirejs automatiquement quand le module /js/app aura 
+                // satisfait tte les depndances et sera donc pret a lemploi. je le recevrai sous la forme dun  objet
+                // en parametre d ela fonctio. ts e qui est expoirter ds ce module app apparaitra
+                // comme propirété de cete objet 'module'
+                var app = new module.App();
+                window.addEventListener('load', function(evt){
+                    console.log("demarage 2 ... ")
+                    app.initPage();
+                });
+            })
+        </script>
+    </head>
+    <body>
+        <h1>My second typescript project</h1>
+        <form>
+            <input type="text" id="id" name="id" placeholder="id"/>
+            <input type="text" id="nom" name="nom" placeholder="nom"/>
+            <input type="text" id="prenom" name="prenom" placeholder="prenom"/>
+            <input type="text" id="email" name="email" placeholder="email"/>
+        </form>
+        <button id="ajoutClient">Creer</button>
+        <div id='clients'></div>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+div#clients {
+    border: 1px solid black;
+    background-color: lightblue;
+}
+div.div-client {
+    border: 2px dashed blue;
+    background-color: lightcoral;
+    padding: 20px;
+    margin: 10px;
+}
+div.div-client:hover {
+    background-color: pink;
+}
