@@ -1,0 +1,25 @@
+<div class="panel">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>nom</th>
+        <th>email</th>
+        <th>solde</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of clients | async">
+        <td>{{c.id}}</td>
+        <td>{{c.nom}}</td>
+        <td>{{c.email}}</td>
+        <td>{{c.solde}}</td>
+        <td>
+          <button class="btn btn-success" (click)="editer(c.id)">Editer</button>
+          <button class="btn btn-danger" (click)="supprimer(c.id)">>Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

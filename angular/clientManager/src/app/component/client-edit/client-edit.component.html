@@ -1,0 +1,19 @@
+<div class="row">
+  <button class="btn btn-warning" (click)="nouveauClient()">Creer un client</button>
+  <form (ngSubmit)="sauverClient(editClient)">
+    <div class="form-group">
+      <input class="form-control" name="id" [(ngModel)]="editClient.id" placeholder="id" />
+    </div>
+    <div class="form-group">
+      <input class="form-control" name="nom" [(ngModel)]="editClient.nom" placeholder="nom" />
+    </div>
+    <div class="form-group">
+      <input class="form-control" name="email" [(ngModel)]="editClient.email" placeholder="email" />
+    </div>
+    <div class="form-group">
+        <input class="form-control" name="solde" [(ngModel)]="editClient.solde" placeholder="solde" />
+    </div>
+      <button class="btn btn-primary" type="submit">Sauver client</button>
+
+  </form>
+</div>
