@@ -1,0 +1,21 @@
+<div class="row">
+  <button class="btn btn-warning" (click)="newProduct()">Create new product</button>
+  <form class="form-inline" (ngSubmit)="saveProduct(editProduct)">
+    <div class="form-group">
+      <input class="form-control" name="id" placeholder="id" [(ngModel)]="editProduct.id" />
+    </div>
+    <div class="form-group">
+      <input class="form-control" name="nom" placeholder="nom" [(ngModel)]="editProduct.nom" />
+    </div>
+    <div class="form-group">
+      <input class="form-control" name="prix" placeholder="prix" [(ngModel)]="editProduct.prix" />
+    </div>
+    <div class="form-group">
+      <input class="form-control" name="poids" placeholder="poids" [(ngModel)]="editProduct.poids" />
+    </div>
+    <div class="form-group">
+      <input class="form-control" name="categorie" placeholder="categorie" [(ngModel)]="editProduct.categorie" />
+    </div>
+    <button class="btn btn-primary" type="submit">Editer</button>
+  </form>
+</div>

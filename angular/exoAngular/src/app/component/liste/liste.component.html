@@ -1,0 +1,33 @@
+<form>
+  <div class="form-group">
+    <input class="form-control" name="searchTerm" [(ngModel)]="searchTerm"  placeholder="recherche de produit" />
+  </div>
+</form>
+<div class="panel">
+
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>nom</th>
+          <th>poids</th>
+          <th>prix</th>
+          <th>categorie</th>
+          <th>actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of produits | async | whereStartWith : 'nom' : searchTerm ">
+          <td>{{c.id}}</td>
+          <td>{{c.nom}}</td>
+          <td>{{c.poids}}</td>
+          <td>{{c.prix}}</td>
+          <td>{{c.categorie | majuscule}}</td>          
+          <td>
+            <button class="btn btn-success" (click)="editer(c.id)">Editer</button>
+            <button class="btn btn-danger" (click)="supprimer(c.id)">>Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
