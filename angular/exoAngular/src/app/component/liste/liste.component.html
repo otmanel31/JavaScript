@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let c of produits | async | whereStartWith : 'nom' : searchTerm ">
+        <tr *ngFor="let c of produits | async | whereStartWith : 'nom' : searchTerm">
           <td>{{c.id}}</td>
           <td>{{c.nom}}</td>
           <td>{{c.poids}}</td>
@@ -25,7 +25,7 @@
           <td>{{c.categorie | majuscule}}</td>          
           <td>
             <button class="btn btn-success" (click)="editer(c.id)">Editer</button>
-            <button class="btn btn-danger" (click)="supprimer(c.id)">>Supprimer</button>
+            <button class="btn btn-danger" (click)="supprimer(c.id)">Supprimer</button>
           </td>
         </tr>
       </tbody>

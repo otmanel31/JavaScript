@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'whereStartWith'
+  name: 'whereStartWith',
+  pure: false
 })
 export class WhereStartWithPipe implements PipeTransform {
 
