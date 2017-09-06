@@ -15,8 +15,7 @@ export class ListeComponent implements OnInit {
   constructor(private produitservice: ProduitService) { }
 
   ngOnInit() {
-    this.searchTerm = "";
-    this.produits = this.produitservice.listenProduits();
+      this.produits = this.produitservice.listenProduits();
   }
   supprimer(id: number): void{
     this.produitservice.deleteProduit(id);

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-
+import { HttpModule } from "@angular/http";
 import { AppComponent } from './app.component';
 import { AppEditComponent } from './component/app-edit/app-edit.component';
 import { ListeComponent } from './component/liste/liste.component';
@@ -24,6 +24,7 @@ import { AboutComponent } from './component/about/about.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     RouterModule.forRoot([
       {path: "home", component: ListeComponent},
       {path: "edit/:id", component: AppEditComponent},

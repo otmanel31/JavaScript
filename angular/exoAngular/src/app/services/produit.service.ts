@@ -31,7 +31,7 @@ export class ProduitService {
     console.log('add product ' + p);
     
     this.produits.push(p);
-    this.produitSubject.next(this.produits);
+    this.produitSubject.next(this.produits.slice());
   }
   deleteProduit(pid: number): void{
     console.log('delete product ' + pid);
@@ -40,7 +40,7 @@ export class ProduitService {
       console.log("passe " + pos);
       
       this.produits.splice(pos, 1);
-      this.produitSubject.next(this.produits);
+      this.produitSubject.next(this.produits.slice());
     }
   }
   editProduit(pid: number): void{
@@ -50,6 +50,11 @@ export class ProduitService {
       let c = this.produits[pos]
       this.editProduitSubject.next(c);
     }
+  }
+  findById(pid: number): Produit{
+    let p =  this.produits.find(p=> p.id == pid);
+    if (typeof(p) == "undefined") return null;
+    else return p;
   }
   /*
   setSearchTerm(searchTerm: string): void{

@@ -11,11 +11,9 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class AppEditComponent implements OnInit {
 
   private editProduct: Produit;
-  private isNewProduct: boolean = false;
 
   constructor(private produitservice: ProduitService, private activadtedRoute:ActivatedRoute, private router: Router) {
     this.editProduct = new Produit(1, "patate", 0.99, 5.0, "legume");
-    this.isNewProduct = true;
    }
 
   ngOnInit() {
@@ -25,32 +23,24 @@ export class AppEditComponent implements OnInit {
     // ds un tableau , ici donc ds paramsa["id"]
     this.activadtedRoute.params.subscribe(params => {
       console.log('params id recu ' + params['id']);
-      let p = this.produitservice.findById(parseInt(params['id']));
-      if (p == null){
-        this.editProduct = new Produit(1, "patate", 0.99, 5.0, "legume");
-        this.isNewProduct = true;
+      if (parseInt(params['id']) != 0){
+        let p = this.produitservice.findById(parseInt(params['id']))
+        .then(p => {
+          this.editProduct = p
+        });
       }
-      else {
-        this.editProduct = p;
-        this.isNewProduct = false;
-      }
-    })
-    this.produitservice.listenEditProduit().subscribe(c=>{
-      this.editProduct = c;
-      this.isNewProduct = true;
     })
   }
   saveProduct(p: Produit): void{
     console.log('passage in save meth');
-    if (this.isNewProduct){
-      this.produitservice.addProduit(p);
-      //this.isNewProduct = false;
-    }
-    this.router.navigateByUrl('/home');
+    this.produitservice.save(this.editProduct).then(p=>{
+      console.log(p);
+      this.router.navigateByUrl('/home');
+    })
   }
+
   newProduct(): void{
     this.editProduct = new Produit(1, "patate", 0.99, 5.0, "legume");
-    this.isNewProduct = true;
   }
 
 }

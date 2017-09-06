@@ -1,6 +1,7 @@
 <form>
   <div class="form-group">
-    <input class="form-control" name="searchTerm" [(ngModel)]="searchTerm"  placeholder="recherche de produit" />
+    <input class="form-control" name="searchTerm" [ngModel]="searchTerm"  placeholder="recherche de produit" 
+      (ngModelChange)="searchChanged($event)"/>
   </div>
 </form>
 <div class="panel">
@@ -17,7 +18,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let c of produits | async | whereStartWith : 'nom' : searchTerm">
+        <!--<tr *ngFor="let c of produits | async | whereStartWith : 'nom' : searchTerm">-->
+        <tr *ngFor="let c of produits | async">
           <td>{{c.id}}</td>
           <td>{{c.nom}}</td>
           <td>{{c.poids}}</td>

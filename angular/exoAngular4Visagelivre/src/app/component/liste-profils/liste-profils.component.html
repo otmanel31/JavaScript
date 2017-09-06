@@ -1,0 +1,54 @@
+
+<div class="panel panel-primary">
+
+  <div class="panel-heading">
+      Recherche
+  </div>
+  <div class="panel-body">
+    <form>
+      <div class="form-group">
+        <label>City</label>
+        <input class="form-check-input" type="radio" name="filter" value="city" [(ngModel)]="filter" />
+        <label>Name</label>
+        <input class="form-check-input" type="radio" name="filter" value="name" [(ngModel)]="filter" />    
+        <input class="form-control" name="searchTerm" placeholder="rechercher" [ngModel]="searchTerm" (ngModelChange)="searchChanged($event)"/>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="panel panel-success">
+  
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th (click)="setSort('id')" [ngClass]="{'isSelected' : fieldname == 'id'}">
+          id<span *ngIf="fieldname=='id'" class="glyphicon" [ngClass]="{'glyphicon-arrow-down' : sortorder, 'glyphicon-arrow-up' : !sortorder}"></span>
+        </th>
+        <th (click)="setSort('nom')" [ngClass]="{'isSelected' : fieldname == 'nom'}">nom</th>
+        <th (click)="setSort('prenom')" [ngClass]="{'isSelected' : fieldname == 'prenom'}">prenom</th>
+        <th (click)="setSort('email')" [ngClass]="{'isSelected' : fieldname == 'email'}">email</th>
+        <th (click)="setSort('ville')" [ngClass]="{'isSelected' : fieldname == 'ville'}" >
+          ville<span *ngIf="fieldname=='ville'" class="glyphicon" [ngClass]="{'glyphicon-sort-by-alphabet' : sortorder, 'glyphicon-sort-by-alphabet-alt' : !sortorder}"></span>
+        </th>
+        <th (click)="setSort('sexe')" [ngClass]="{'isSelected' : fieldname == 'sexe'}">sexe</th>        
+        <th >actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--<tr *ngFor="let c of produits | async | whereStartWith : 'nom' : searchTerm">-->
+      <tr *ngFor="let c of profils | async | fieldsort : fieldname : sortorder">
+        <td>{{c.id}}</td>
+        <td>{{c.nom}}</td>
+        <td>{{c.prenom}}</td>
+        <td>{{c.email}}</td>
+        <td>{{c.ville }}</td>          
+        <td>{{c.sexe }}</td>   
+        <td>
+          <!--<button class="btn btn-success" (click)="editer(c.id)">Editer</button>-->
+          <button class="btn btn-success" routerLink="/edit/{{c.id}}">Editer</button>
+          <button class="btn btn-danger" (click)="supprimer(c.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
