@@ -1,0 +1,15 @@
+<img src="http://localhost:8080/springMvcGalerie/api/images/downloadthumb/{{img.id}}" />
+<div class="row">
+  <div *ngFor="let img of imagesFile | async" class="col-xs-6 col-md-3">
+    <div class="col-xs-6 col-md-3">
+      <div class="thumbnail">
+        <a href="http://localhost:8080/springMvcGalerie/api/images/download/{{img.id}}">
+          <img src="http://localhost:8080/springMvcGalerie/api/images/downloadthumb/{{img.id}}" width="200" height="300"/>
+        </a>
+      </div>
+      <div class="caption">
+        <p>{{img.filename | truncate : 10 : "..." }} <br/> {{img.filesize | bytes }}</p>
+      </div>
+    </div>
+  </div>
+</div>
